@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        // ... other options
+        "typeRoots": ["./node_modules/@types", "./src/types"],  // Add the path to your custom types directory
+    },
+    "include": ["src/**/*.ts", "types.d.ts"]  // Include the types.d.ts file
+}
