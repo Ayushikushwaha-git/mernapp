@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-
+//import checkAuth from '../../../server/checkAuth.mjs';
 export default function Addedpop({AddTheProducts,closePop}) {
+ 
     const [title, setTitle] = useState("");
     const [image, setImage] = useState();
     const [desc, setDesc] = useState("");
@@ -29,7 +30,7 @@ export default function Addedpop({AddTheProducts,closePop}) {
           "Access-Control-Allow-Origin": "*",
           
         },
-        body: formData,
+        body: JSON.stringify(formData),
        /* body: JSON.stringify({
           title: title,
           image: image,
@@ -47,7 +48,7 @@ export default function Addedpop({AddTheProducts,closePop}) {
     }
       // Call the parent function with the collected data
       AddTheProducts( title, desc, price,image );
-      setTitle("");
+    setTitle("");
     setDesc("");
     setPrice("");
     setImage(null);

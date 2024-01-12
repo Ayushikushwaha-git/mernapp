@@ -36,6 +36,7 @@ app.options('*', (req, res) => {
 
 app.set("view engine","ejs");
 
+ 
 app.post('/sign', async function(req,res){
    const existingUser = await User.findOne({ email: req.body.email });
 
@@ -140,7 +141,7 @@ const storage = multer.diskStorage({
  const upload = multer({ storage: storage ,limits: { fileSize: 1024 * 1024 * 5 },})
 app.post('/upload-image',checkauth,upload.single("image"),async(req,res)=>{
    const imageUrl =req.file.filename;
-   const userId = req.userId;
+   const userId = req.User._id;
    console.log(userId);
   try{
    //const userEmail = req.body.email;
@@ -173,7 +174,15 @@ res.json({status:e})
  }
   // res.send("Uploaded")
 })
+app.get('/work', async (req, res) => {
+   /*const user_id = req.user._id
+ console.log(user_id)
+   const Products = await Product.find({user_id});
  
+   res.status(200).json(Products)
+*/
+console.log(req)
+ })
 
 
 
