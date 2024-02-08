@@ -1,16 +1,10 @@
 import React from "react";
 import logo from "./11-removebg-preview.png";
-//import "App.css";
 import './inside.css';
-import Main from "./Main.js";
-import Login from './Login.js';
 import Second from "./Second";
 import Third from "./Third";
-//import Contacts from './Contacts.js';
 import {Link} from "react-router-dom";
-//import Second from "./Second.js";
 
-//import logo from "./logocart.png";
 
 export default function Header() {
  
@@ -30,12 +24,12 @@ export default function Header() {
       </div>
      <div className="midPart">
       <div className="oneSide">
-      <h1>"Seize opportunities effortlessly,
+      <h1 className="firstHead">"Your health journey starts here,,
       </h1>
-      <h1>            buy and sell with just one click."
+      <h1 className="firstHead">         where care meets compassion."
       </h1>
       <h3>
-      where convenience meets opportunity.
+      Building healthier lives, click by click.
       </h3>
       <form className="d-flex" role="search">
             <Link to="/login" className="btn btn-outline-success">Signin</Link>
@@ -44,7 +38,7 @@ export default function Header() {
       {/* <button className="btn btn-outline-success" type="submit"><Link href="/login">Signin</Link></button> */}
         {/* <button className="btn btn-right btn-outline-success" type="submit">Signup</button> */}
       </div>
-      <img className="img" src={logo}></img>
+      <img className="img firstImg img-fluid" src={logo}></img>
      
      </div>
      <Second/>

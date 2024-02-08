@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import "./inside.css";
-import Second from "./Pop";
-
 import { Link } from "react-router-dom";
+
 export default function Sign() {
+  let navigate=useNavigate();
   const [popup, setpopup] = useState(true);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -16,7 +15,7 @@ export default function Sign() {
   
   async function handleSubmit(e) {
    
-    
+  
     e.preventDefault();
    
     try {
@@ -30,19 +29,21 @@ export default function Sign() {
           email: email,
           password: password,
           fullname: fullname,
-          seller:seller,
+          //seller:seller,
         }),
       });
-      console.log(seller);
+      //console.log(seller);
       const json = await response.text();
+      navigate('/consumerInterface')
       console.log(json);
-      SellerOrConsumer();
+      //SellerOrConsumer();
+      
      
     } catch (err) {
       console.log(err);
     }
   }
-  const closePopup = (event) => {
+ /* const closePopup = (event) => {
     setpopup(false);
     if (event.target.className === "firstimg") {
       setSeller(true);
@@ -62,11 +63,11 @@ export default function Sign() {
       navigate("/consumerInterface");
     } else {
       alert("Default signup");
-    }
-  };
+    }{popup && <Second closePopup={closePopup} />}
+  };*/
   return (
     <>
-      {popup && <Second closePopup={closePopup} />}
+      
       <div className="container-login">
         <div className="col2">
           <div className="loginContain">

@@ -1,6 +1,8 @@
 import express from 'express';
 import User from './userModel.mjs';
-import Product from './productModel.mjs';
+import SkinPro from './SkinModel.mjs';
+import EyePro from './EyeModel.mjs';
+import InfectPro from './InfectionModel.mjs';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import session from 'express-session';
@@ -11,7 +13,10 @@ import userRouter from './userModel.mjs';
 import morgan from 'morgan';
 import multer from 'multer';
 import jwt from 'jsonwebtoken';
+import Order from './OrderModel.mjs';
 import checkauth from './checkAuth.mjs';
+import mongoose from 'mongoose';
+
 const app=express();
 const PORT = 8000;
 
@@ -47,7 +52,7 @@ app.post('/sign', async function(req,res){
    }
    let create = await User.create({
       email: req.body.email,
-      seller: req.body.seller,
+      //seller: req.body.seller,
       fullname: req.body.fullname,
       password: req.body.password,
    
@@ -82,18 +87,21 @@ app.post('/login', async function(req,res){
       id: existingUser._id
    }
 }*/
-const token = jwt.sign({
-   email: existingUser.email,
-   userId: existingUser._id,
-   
-}, 'ayushikushwaha', {
+const data = {
+   user: {
+       id: existingUser._id
+   }
+}
+console.log(data)
+const token = jwt.sign(
+  data, 'ayushikushwaha', {
    expiresIn: "3d",
 });
 return res.json({
    success: true,
-   user: {
+   /*user: {
       seller: existingUser.seller, // Include the seller information
-   },
+   },*/
    token: token,
 });
    }
@@ -108,8 +116,93 @@ return res.json({
   
 });
 
+app.get('/getSkinPro', async(req,res)=>{
+  const skin=await SkinPro.find({});
+  //console.log(skin)
+  res.send({status:"ok",data:skin});
+    
+
+})
+app.get('/getEyePro', async(req,res)=>{
+   const skin=await EyePro.find({});
+   //console.log(skin)
+   res.send({status:"ok",data:skin});
+     
+ 
+ })
+ app.get('/getInfectPro', async(req,res)=>{
+   const skin=await InfectPro.find({});
+   //console.log(skin)
+   res.send({status:"ok",data:skin});
+     
+ 
+ })
+ app.get('/getCartData', async(req,res)=>{
+   const skin=await Order.find({});
+   //console.log(skin)
+   res.send({status:"ok",data:skin});
+     
+ 
+ })
+ app.post('/getuser', checkauth, async (req, res) => {
+   try {
+       const userId = req.user.id;
+       const user = await User.findById(userId).select("-password") // -password will not pick password from db.
+       res.send(user)
+   } catch (error) {
+       console.error(error.message)
+       res.send("Server Error")
+
+   }
+})
+app.post('/deleteData', async (req, res) => {
+   const orderId = req.body.orderid; // Assuming you send the orderId along with proId
+   //console.log(req)
+    const proId = req.body.proId;
+   
+   try {
+      const order = await Order.findById(orderId);
+      console.log(order)
+      order.order_data = order.order_data.filter(item => item[0].id !== proId);
+
+      // Save the updated order
+      await order.save();
+
+   
+       //const user = await User.findById(userId).select("-password") // -password will not pick password from db.
+       console.log("Deleted successfully"); 
+       res.send({status:"Ok",data:"DELETED"})
+   } catch (error) {
+       console.error(error.message)
+       res.send("Server Error")
+
+   }
+})
+app.post('/deleteDatabs', async (req, res) => {
+   const userEmail = req.body.orderid; // Assuming you send the orderId along with proId
+   console.log(req)
+   
+  // userData = userData.filter(user => user.email !== userEmail);
+   try {
+      //const order = await Order.findById(orderId);
+      //console.log(order)
+     // order.order_data = [];
+     await Order.deleteMany({ email: userEmail });
+      // Save the updated order
+     // await order.save();
+
+   
+       //const user = await User.findById(userId).select("-password") // -password will not pick password from db.
+       console.log("Deleted successfully"); 
+       res.send({status:"Ok",data:"DELETED"})
+   } catch (error) {
+       console.error(error.message)
+       res.send("Server Error")
+
+   }
+})
 /*app.post('/product', async function(req,res){
-   console.log(req.file);
+   
    
     let creatte=await Product.create({
      title:req.body.title,
@@ -126,63 +219,44 @@ return res.json({
  user.product.push(creatte._id);
  await user.save(); 
  res.send("done");*/
+app.post('/orderData',async(req,res)=>{
+   let data=req.body.order_data;
+   //console.log(req.body.email+"gyhghg")
+  // await data.splice(0,0,{Order_})
+  let emailId=await Order.findOne({'email':req.body.email})
+  console.log(emailId+"khkh")
+if(emailId==null){
+   try{
+      await Order.create({
+         email:req.body.email,
+         order_data:[data]
+      }).then(()=>{
+         res.json({success:true})
 
+      })
 
-const storage = multer.diskStorage({
-   destination: function (req, file, cb) {
-     cb(null, 'uploads/')
-   },
-   filename: function (req, file, cb) {
-     const uniqueSuffix = Date.now();
-     cb(null,  uniqueSuffix+file.originalname);
+   }catch(error){
+      console.log(error.message)
+      res.send("Server error",error.message);
    }
- })
- 
- const upload = multer({ storage: storage ,limits: { fileSize: 1024 * 1024 * 5 },})
-app.post('/upload-image',checkauth,upload.single("image"),async(req,res)=>{
-   const imageUrl =req.file.filename;
-   const userId = req.User._id;
-   console.log(userId);
-  try{
-   //const userEmail = req.body.email;
-   
-  
-  
-  
-  //console.log(userId)
-   
-  
-   let create = await Product.create({
-      title: req.body.title,
-      desc: req.body.desc,
-      price: req.body.price,
-      image: imageUrl,
-    user:userId,
-    
+  }else{
+   try{
+      await Order.findOneAndUpdate({email:req.body.email},
+         {
+            $push:{order_data:data}
+         }).then(()=>{
+            res.json({success:true})
+         })
 
-   });
-   //user.product.push(create._id);
-   // await user.save();
-   
-   //console.log(create._id);
-   //console.log(create);
-  res.send(create);
-  
+   }catch(error){
+      res.send("Server error",error.message);
+   }
   }
- catch(e){
-res.json({status:e})
- }
-  // res.send("Uploaded")
 })
-app.get('/work', async (req, res) => {
-   /*const user_id = req.user._id
- console.log(user_id)
-   const Products = await Product.find({user_id});
+
+
+
  
-   res.status(200).json(Products)
-*/
-console.log(req)
- })
 
 
 

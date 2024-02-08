@@ -1,13 +1,6 @@
-
-import Cart2 from './Cart2.js';
 import logo from "./seller-removebg-preview.png";
-//import "App.css";
 import './inside.css';
-import Main from "./Main.js";
-import Login from './Login.js';
 
-//import Contacts from './Contacts.js';
-import {Link} from "react-router-dom";
 
 export default function Second() {
   
@@ -20,7 +13,7 @@ export default function Second() {
        
      <div className="midPart2">
       <div className="oneSide2">
-      <img className="img" src={logo}></img>
+      <img className="img firstImg img2 img-fluid" src={logo}></img>
       </div>
       <div className='oneSide3'>
 

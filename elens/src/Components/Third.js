@@ -14,20 +14,20 @@ export default function Third() {
       <section id="seller-benefits" className="section">
   <div className="container">
     <div className="section-header">
-      <h3>Why Sell with Us?</h3>
-      <p>Discover the benefits of becoming a seller on our platform.</p>
+      <h3>Why Buy from Here?</h3>
+      <p>Discover the benefits of using our platform.</p>
     </div>
 
     <div className="benefit-item">
-      {/* <img src="seller-icon1.png" alt="Easy Setup Icon"> */}
-      <h5>Easy Setup</h5>
-      <p>Quickly set up your seller account and start listing your work in just a few simple steps. Our user-friendly interface makes the process hassle-free.</p>
+    
+      <h5>Quality Assurance</h5>
+      <p>We prioritize quality in every product we offer, ensuring that each item meets stringent standards before reaching your hands.</p>
     </div>
 
     <div className="benefit-item">
       
-      <h5>Global Reach</h5>
-      <p>Reach a global audience and showcase your work to buyers from around the world. Expand your customer base and increase your sales opportunities.</p>
+      <h5>Customer Satisfaction</h5>
+      <p>Your satisfaction is our top priority. We go above and beyond to ensure every customer has a seamless shopping experience, from start to finish.</p>
     </div>
 
     <div className="benefit-item">
@@ -38,14 +38,14 @@ export default function Third() {
 
     <div className="benefit-item">
      
-      <h5>Promotion Assistance</h5>
-      <p>Get additional visibility for your work with our promotional tools. Increase your sales by reaching more potential buyers through targeted marketing.</p>
+      <h5>Fast and Reliable Shipping</h5>
+      <p>We understand the importance of timely delivery. With our efficient shipping process, you can expect your orders to arrive promptly and in pristine condition.</p>
     </div>
 
     <div className="benefit-item">
      
-      <h5>Community Support</h5>
-      <p>Join a thriving community of talented sellers. Connect with other artists, share experiences, and receive support from our community forums.</p>
+      <h5>Trust and Transparency</h5>
+      <p>We believe in transparency and honesty. You can trust that what you see is what you get, with clear descriptions and accurate product information provided for every item.</p>
     </div>
   </div>
 </section>

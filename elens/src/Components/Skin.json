@@ -1,0 +1,37 @@
+[
+    {
+       
+        "name": "T-Bact 2% Ointment",
+        "img": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSiJ31iKM8FxKHRADllvtzsVBlkVwlotbRAIPInYPUKHOVw9ZViBs8B06MxaVfrJEt7L8A9SWLiGttmYSQi0A1HlXeYZTigA2GnWTni5cbEA8Ehl3Ib6u_oEA&usqp=CAE",
+        "description": "T-Bact 2% Ointment is an antibiotic medicine used to treat certain skin infections such as impetigo (red sores), recurring boils, and others"
+    },
+    {
+        
+        "name": "ADEL 78 DERCUT Oinment",
+        "img": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTw-Aw8VH6pbfinBsej2VxkC-3VbexE2ytOCQxbyyoRlJIkNtbOJeRozTMU58H8PvIHlqWItzshJSP6LGfb7YR7f_PPe3ONKg&usqp=CAE",
+       
+        "description": "PSORIASIS, PIMPLES (ACNE VULGARIS), ECZEMA, URTICARIA AND OTHER SKIN DISEASES"
+    },
+    {
+       
+        "name": "MEGAHEAL GEL 15 GM",
+        "img": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTu15rZ6NWeqZR4iF7w9eGm36Ei8zebw-tbf_sa3FulPZ0u9H1GB5z7c90T46ju-lpQRBPkiMAx0tCB3QC7U_SdOB981q8QmrLPpcYYoeZNHHuIurAIN6KjMg&usqp=CAE",
+       
+        "description": "Megaheal Gel 15 gm belongs to the group of medicines called antiseptic agents primarily used to treat and prevent infections in or around skin wounds, cuts, and scratches."
+    },
+   
+    {
+        "name": "Meganano Gel",
+        "img": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQwabr8nlcgTMNmnFCbbtMrb1H4kGa6kfthjvgkyqzCDCa5Hppnrk9qiaSqFx4QvPcaP53tb5yCHHt6Qm4fKyu-t7688CYY3md1oEvDJ6xPvrYN3C5BRnD5&usqp=CAE",
+        
+        "description": "Meganano Gel is an antiseptic that is used for the prevention of wound infection. Meganano Gel kills and prevents the growth of infection-causing microbes"
+    },
+   
+    {
+        
+        "name": "Iodosorb Iodine Gel",
+        "img": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQqFovKsMB-0VmQS_iP2BRHDa2Rej25sh9mh-zT-rqCp9O2VW3FCDeO7eMM1CSFvH9Xr7JGLf7-5YM85gyX_4JbfSNe4iw2Eg&usqp=CAE",
+        
+        "description": "Iodosorb Iodine Gel can act as a debrider, exudate, and bacteria-killer for wounds. Its complex properties make it an integral part of some advanced wound care."
+    }
+]

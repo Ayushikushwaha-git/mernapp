@@ -21,19 +21,11 @@ const userSchema = new mongoose.Schema({
     required:true,
     unique:true,
   },
-  seller:{
-    type: Boolean,
-    required:true,
-   
-  },
-  secret:{
-    type: String,
-    required:true,
-  },
- product:[{
-  type:mongoose.Schema.Types.ObjectId,
-  ref:'Product',
-}]
+ product:{
+  type: Array,
+ }
+ 
+ 
 
 });
 

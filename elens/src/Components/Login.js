@@ -1,17 +1,15 @@
 import React,{useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "./inside.css";
-import SellerInterface from './HomeForSeller';
-import ConsumerInterface from './HomeForConsumer';
 import {Link} from "react-router-dom";
 
 export default function Login() {
   const [email,setemail]=useState("");
   const [password,setpassword]=useState("");
   let navigate =useNavigate();
-  const [role, setRole] = useState(false);
+  //const [role, setRole] = useState(false);
  
-  //const [loggedIn, setLoggedIn] = useState(false);
+ 
   
   async function handleSubmit(e){
    e.preventDefault();
@@ -33,15 +31,19 @@ export default function Login() {
       alert("Enter valid credentials")
     }
     if(json.success){
-      if (json.user && json.user.seller !== undefined) {
-     if(json.user && json.user.seller){
-      navigate('/sellerInterface');
-     }else{
+     // if (json.user && json.user.seller !== undefined) {
+     //if(json.user && json.user.seller){
+      localStorage.setItem("userEmail",email);
+      localStorage.setItem('authToken',json.token)
+      console.log(localStorage.getItem("userEmail"))
       navigate('/consumerInterface')
-     }}
+     }
+     //else{
+    //  
+     //}}
       
-    }
-   /* 
+    //}
+   /*
    console.log("json.role")
     setRole(json.role);
     setLoggedIn(true);
@@ -67,7 +69,9 @@ export default function Login() {
     } 
     
   }
- 
+ const handle=()=> {
+  alert("Connect to Admin")
+ }
   
   return (
     
@@ -84,7 +88,7 @@ export default function Login() {
           <div className="loginContain">
             <form onSubmit={handleSubmit}>
             <div className="upperbox">
-            <h2>OneHandToAnother</h2>
+            <h2 >OneHandToAnother</h2>
              
         <div className="input-group mb-3">
                 <span className="input-group-text" id="basic-addon1">
@@ -123,7 +127,7 @@ export default function Login() {
               
             </div>
             </form>
-            <h6 className="forget">Forget the Password?</h6>
+            <h6 className="forget" onClick={handle}>Forget the Password?</h6>
           </div>
         </div>
       </div>
